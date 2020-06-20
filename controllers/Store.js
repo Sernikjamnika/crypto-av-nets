@@ -7,7 +7,7 @@ function save(id, entry) {
 function get(id) {
   const element = Store[id];
   if (!element) {
-    throw new Error(`Element ${id} doesn't exist.`);
+    throw new Error(`Room ${id} doesn't exist.`);
   }
   return element;
 }

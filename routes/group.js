@@ -41,4 +41,16 @@ router.post("/:id/join", (req, res) => {
   }
 });
 
+router.post("/:id/vote", (req, res) => {
+  try {
+    const id = req.params.id;
+    const vote = parseInt(req.body.vote); // g^{c_i * y_i}
+    const room = Room.vote(id, vote);
+    res.json(room);
+  } catch (error) {
+    console.error(error);
+    res.status(400).send(error.message);
+  }
+});
+
 module.exports = router;
