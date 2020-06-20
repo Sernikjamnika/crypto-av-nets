@@ -1,4 +1,3 @@
-const uniqueId = require("lodash/uniqueId");
 const uniq = require("lodash/uniq");
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
@@ -61,11 +60,10 @@ function randomGenerator(G) {
   }
 }
 
-async function newGroup(question, n) {
-  const id = uniqueId();
-  const { G, q } = await createGroup();
+async function create() {
+  const { G, p, q } = await createGroup();
   const g = randomGenerator(G);
-  return { n, question, id, q, G, g };
+  return { p, q, G, g };
 }
 
-module.exports = newGroup;
+module.exports = { create };
