@@ -27,6 +27,9 @@ function vote(id, v) {
   if (!Number.isInteger(v)) {
     throw new Error(`Invalid vote: ${v}`);
   }
+  if (Array.isArray(room.publicKeys) && room.publicKeys.length < room.n) {
+    throw new Error(`Waiting for all users to join`);
+  }
   if (Array.isArray(room.answers) && room.answers.length >= room.n) {
     throw new Error(`Everyone voted in room ${id}`);
   }

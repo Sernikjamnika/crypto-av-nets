@@ -63,7 +63,7 @@ function randomGenerator(G) {
 async function create() {
   const { G, p, q } = await createGroup();
   const g = randomGenerator(G);
-  return { p, q, G, g };
+  return { p, q, g };
 }
 
 module.exports = { create };
